@@ -27,8 +27,12 @@ app.use('/product',ProductRoutes);
 app.use('/uploads',express.static('uploads'))
 
 
-const port = 4000;
+const port = process.env.PORT||4000;
 
 app.listen(port,(req,res)=>{
   console.log(`The server is running successfully ${port}`);
+})
+
+app.use('/',(req,res)=>{
+  res.send('Welcome to MealJet');
 })
