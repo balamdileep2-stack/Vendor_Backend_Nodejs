@@ -38,12 +38,15 @@ const addFirm = async (req, res) => {
 
     const savedFirm = await firm.save();
 
+    const firmId = savedFirm._id
+
     vendor.firm.push(savedFirm._id);
 
     await vendor.save();
 
     return res.status(201).json({
-      message: 'Firm added successfully'
+      message: 'Firm added successfully',
+      firmId
     });
 
   } catch (err) {
